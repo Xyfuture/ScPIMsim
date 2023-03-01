@@ -3,3 +3,12 @@
 //
 
 #include "PayloadBase.h"
+
+PayloadBase::PayloadBase() = default;
+
+PayloadBase::~PayloadBase() = default;
+
+std::ostream &operator<<(std::ostream & out, PayloadBase & self) {
+    out << self.getContent() ;
+    return out;
+}

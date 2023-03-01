@@ -6,9 +6,17 @@
 
 #ifndef UTILS_PAYLOADBASE_H_
 #define UTILS_PAYLOADBASE_H_
+#include <string>
 
 
 class PayloadBase {
+public:
+    PayloadBase();
+    ~PayloadBase();
+
+    virtual std::string getContent() = 0;
+
+    friend std::ostream& operator<<(std::ostream& ,PayloadBase&);
 
 };
 

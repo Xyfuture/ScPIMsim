@@ -19,7 +19,8 @@ target("test")
 
     add_packages("systemc","nlohmann_json")
 
-    add_files("src/test.cpp")
+    add_files("src/**.cpp")
+    add_includedirs("src/")
     -- add_includedirs("$(curdir)")
 
 
