@@ -1,5 +1,6 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
+#include "nlohmann/json.hpp"
 using namespace sc_core;
 
 SC_MODULE(PROCESS) {
