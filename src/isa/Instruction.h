@@ -9,6 +9,13 @@
 
 
 class Instruction {
+public:
+    Instruction();
+    ~Instruction();
+
+    int rs1_addr = 0;
+    int rs2_addr = 0;
+    int rd_addr = 0;
 
 };
 

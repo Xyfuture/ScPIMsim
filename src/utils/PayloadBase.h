@@ -9,10 +9,10 @@
 #include <string>
 
 
-class PayloadBase {
-public:
-    PayloadBase();
-    ~PayloadBase();
+struct PayloadBase {
+
+    PayloadBase() ;
+    ~PayloadBase() ;
 
     virtual std::string getContent() = 0;
 
