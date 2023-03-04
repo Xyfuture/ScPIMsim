@@ -18,7 +18,8 @@ BETTER_ENUM(Opcode,int,
             vmv,
             vrsu,vrsl,
             ld,st,lldi,lmv,
-            send,recv,wait,sync);
+            send,recv,wait,sync,
+            nop); // add nop
 
 auto to_op = Opcode::_from_string;
 

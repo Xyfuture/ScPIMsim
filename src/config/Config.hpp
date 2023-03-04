@@ -22,12 +22,12 @@ public:
 
     std::vector<int> layout = {0}; // mesh use this
 
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(BusConfig,
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE_WITH_DEFAULT(BusConfig,
                                        bus_topology,latency,energy,layout)
 };
 
-class MemoryConfig{
-public:
+struct MemoryConfig{
+
     long long memory_size = 1024*1024 ; // Bytes
     int data_width = 16; // Bytes
 
@@ -37,24 +37,42 @@ public:
     int read_latency = 1.0; // Cycles
     float read_energy = 1.0; // nJ
 
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(MemoryConfig,
-                                       memory_size,data_width,
-                                       write_latency,write_energy,
-                                       read_latency,read_energy)
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE_WITH_DEFAULT(MemoryConfig,
+                                                memory_size,data_width,
+                                                write_latency,write_energy,
+                                                read_latency,read_energy)
+};
+
+
+
+
+struct CoreConfig{
+
+//    double frequency = 1; //GHz
+    double period = 1; // ns
+
+    int input_precision = 8 ; // bits
+    int weight_precision = 8; // bits
+
+    // Matrix Unit
+    int matrix_latency = 1000; // Cycles
+    float matrix_energy_per_pe = 1.0; // nJ
+    int device_precision = 2; // bits
+    std::vector<int> xbar_size = {128,128};
+
+    // Vector Unit
+    int vector_width = 32 ;
+    int vector_latency = 2 ; // Cycles per op
+    float vector_energy = 1.0; // nJ
 
 
 };
 
-
-class CoreConfig{
-
-};
-
-class ChipConfig{
+struct ChipConfig{
 
 };
 
-class SimConfig{
+struct SimConfig{
 
 };
 

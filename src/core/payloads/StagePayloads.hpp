@@ -10,18 +10,16 @@
 
 
 struct DecodeInfo:public PayloadBase{
-    DecodeInfo();
-    ~DecodeInfo();
 
     int pc = -1;
     Instruction inst;
 
+    std::string getContent(){
+        return "";
+    }
 };
 
 struct ScalarInfo:public PayloadBase{
-
-    ScalarInfo();
-    ~ScalarInfo();
 
     int pc = -1 ;
     Opcode op ;
@@ -30,6 +28,10 @@ struct ScalarInfo:public PayloadBase{
     int rs2_data = 0;
 
     int rd_addr = 0;
+
+    std::string getContent(){
+        return "";
+    }
 };
 
 
@@ -41,6 +43,10 @@ struct VectorInfo:public PayloadBase{
     Opcode op;
 
     //
+
+    std::string getContent(){
+        return "";
+    }
 };
 
 struct MatrixInfo:public PayloadBase{
@@ -52,6 +58,10 @@ struct MatrixInfo:public PayloadBase{
 
     //
 
+
+    std::string getContent(){
+        return "";
+    }
 };
 
 struct TransferInfo:public PayloadBase{
@@ -60,4 +70,8 @@ struct TransferInfo:public PayloadBase{
 
     int pc = -1;
     //
+
+    std::string getContent(){
+        return "";
+    }
 };

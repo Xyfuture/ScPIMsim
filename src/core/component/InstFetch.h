@@ -20,8 +20,9 @@ class InstFetch: public sc_module  {
 public:
     InstFetch(sc_module_name name,const CoreConfig& config);
 
+    
 
-    void updatePC();
+//    void updatePC
 
 
 private:

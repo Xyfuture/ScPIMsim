@@ -18,6 +18,10 @@ struct PayloadBase {
 
     friend std::ostream& operator<<(std::ostream& ,PayloadBase&);
 
+    // overload =,==,<< and sc_trace()
+    // use default =,== is enough for most case
+    // sc_trace() only when you use trace file (currently not used)
+
 };
 
 
