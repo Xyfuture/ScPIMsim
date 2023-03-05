@@ -4,6 +4,14 @@
 
 #include "InstFetch.h"
 
+struct A{
+
+};
+
+struct B:A{
+    int pc=0;
+};
+
 
 InstFetch::InstFetch(const sc_module_name& name, const CoreConfig &config)
 :sc_module(name),config(config),pc_reg("pc_reg",config.period){
@@ -19,5 +27,16 @@ InstFetch::InstFetch(const sc_module_name& name, const CoreConfig &config)
 
 
 void InstFetch::process() {
+    auto cur_pc = pc_out.read();
+    auto jump_info = jump_pc.read();
 
+
+    if(jump_info.is_jump){ // jump to pc+offset
+        auto next_pc = cur_pc+jump_info.offset;
+//        DecodeInfo decode_info {.pc = 1,.inst = Instruction()};
+//        B b {.pc=1};
+    }
+    else{
+
+    }
 }

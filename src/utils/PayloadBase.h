@@ -12,10 +12,10 @@
 
 struct PayloadBase {
 
-    PayloadBase() ;
-    ~PayloadBase() ;
+//    PayloadBase() ;
+//    ~PayloadBase() ;
 
-    virtual std::string getContent() = 0;
+    virtual std::string getContent() ;// pure virtual function is better but cpp is awful
 
     friend std::ostream& operator<<(std::ostream& ,PayloadBase&);
 

@@ -10,7 +10,7 @@ add_requires("systemc main",{debug=true})
 add_requires("nlohmann_json 3.11.2",{debug=true})
 add_requires("better-enums 0.11.3",{debug=true})
 
-set_languages("cxx11") -- some bug with cmake
+set_languages("cxx17") -- some bug with cmake
 
 
 target("ScPIMsim")
@@ -24,7 +24,7 @@ target("ScPIMsim")
     add_includedirs("src/")
     -- add_includedirs("$(curdir)")
 
-    add_cxxflags("-Wextra", "-Wno-unused-parameter" ,"-Wno-unused-variabl",{tools={"gcc","clang"}})
+    add_cxxflags("-Wextra", "-Wno-unused-parameter" ,"-Wno-unused-variable",{tools={"gcc","clang"}})
     --add_cxxflags("-std=c++11")
 
     add_packages("systemc","nlohmann_json","better-enums")

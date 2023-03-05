@@ -8,25 +8,34 @@
 #include "isa/Instruction.h"
 #include "isa/ISA.h"
 
+#define GET_CONTENT()
+
 
 struct JumpInfo:public PayloadBase{
-    int offset=0;
     bool is_jump = false;
+    int offset=0;
+
 };
 
-struct DecodeInfo:public PayloadBase{
+struct DecodeInfo: PayloadBase{
 
     int pc = -1;
     Instruction inst=Instruction();
 
-    std::string getContent(){
-        return "";
+    bool operator==(const DecodeInfo& ano) const{
+        return ano.pc == pc;
     }
+};
 
+struct test:PayloadBase{
+    test() = default;
+    int a,b;
 };
 
 
+
 struct ScalarInfo:public PayloadBase{
+
 
     int pc = -1 ;
     Opcode op ;
@@ -36,8 +45,9 @@ struct ScalarInfo:public PayloadBase{
 
     int rd_addr = 0;
 
-    std::string getContent(){
-        return "";
+
+    bool operator==(const ScalarInfo& ano) const{
+        return ano.pc == pc;
     }
 };
 
@@ -49,9 +59,11 @@ struct VectorInfo:public PayloadBase{
 
     //
 
-    std::string getContent(){
-        return "";
+
+    bool operator==(const VectorInfo& ano) const{
+        return ano.pc == pc;
     }
+
 };
 
 struct MatrixInfo:public PayloadBase{
@@ -61,10 +73,10 @@ struct MatrixInfo:public PayloadBase{
 
     //
 
-
-    std::string getContent(){
-        return "";
+    bool operator==(const MatrixInfo& ano) const{
+        return ano.pc == pc;
     }
+
 };
 
 struct TransferInfo:public PayloadBase{
@@ -72,7 +84,9 @@ struct TransferInfo:public PayloadBase{
     int pc = -1;
     //
 
-    std::string getContent(){
-        return "";
+
+    bool operator==(const TransferInfo& ano) const{
+        return ano.pc == pc;
     }
+
 };
