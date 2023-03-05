@@ -79,10 +79,11 @@ private:
 
     T next_value;
     T value;
+    sc_event trigger;
+
+public:
     sc_in<T> input;
     sc_out<T> output;
-
-    sc_event trigger;
 };
 
 
@@ -92,7 +93,15 @@ class RegEnable:public sc_module{
 public:
     SC_HAS_PROCESS(RegEnable);
 
-    RegEnable(const sc_module_name& name,double period ){
+    RegEnable(const sc_module_name& name,double period )
+    :sc_module(name),period(period){
+        SC_METHOD(processInput);
+        sensitive<<input;
+        SC_METHOD(processEnable);
+        sensitive<<enable;
+
+        SC_METHOD(update);
+        sensitive<<trigger;
 
     }
 
@@ -123,12 +132,12 @@ private:
     T next_value;
     T value;
 
+    sc_event trigger;
+
+public:
     sc_in<T> input;
     sc_in<bool> enable;
     sc_out<T> output;
-
-    sc_event trigger;
-
 };
 
 

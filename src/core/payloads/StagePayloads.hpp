@@ -9,15 +9,22 @@
 #include "isa/ISA.h"
 
 
+struct JumpInfo:public PayloadBase{
+    int offset=0;
+    bool is_jump = false;
+};
+
 struct DecodeInfo:public PayloadBase{
 
     int pc = -1;
-    Instruction inst;
+    Instruction inst=Instruction();
 
     std::string getContent(){
         return "";
     }
+
 };
+
 
 struct ScalarInfo:public PayloadBase{
 
@@ -36,8 +43,6 @@ struct ScalarInfo:public PayloadBase{
 
 
 struct VectorInfo:public PayloadBase{
-    VectorInfo();
-    ~VectorInfo();
 
     int pc = -1;
     Opcode op;
@@ -50,8 +55,6 @@ struct VectorInfo:public PayloadBase{
 };
 
 struct MatrixInfo:public PayloadBase{
-    MatrixInfo();
-    ~MatrixInfo();
 
     int pc = -1;
     Opcode op;
@@ -65,8 +68,6 @@ struct MatrixInfo:public PayloadBase{
 };
 
 struct TransferInfo:public PayloadBase{
-    TransferInfo();
-    ~TransferInfo();
 
     int pc = -1;
     //

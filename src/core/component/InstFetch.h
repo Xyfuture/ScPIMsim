@@ -12,17 +12,20 @@
 
 #include "config/Config.hpp"
 #include "isa/Instruction.h"
+#include "utils/Register.hpp"
+#include "core/payloads/StagePayloads.hpp"
+
 
 using namespace sc_core;
 
 class InstFetch: public sc_module  {
     SC_HAS_PROCESS(InstFetch);
 public:
-    InstFetch(sc_module_name name,const CoreConfig& config);
+    InstFetch(const sc_module_name& name,const CoreConfig& config);
 
     
 
-//    void updatePC
+    void process();
 
 
 private:
@@ -30,9 +33,19 @@ private:
     std::vector<Instruction> inst_buffer;
 
 private:
+    RegEnable<int> pc_reg;
 
-    int pc = 0;
+    sc_signal<int> pc_in;
+    sc_signal<int> pc_out;
 
+public:
+
+    sc_in<bool> if_enable;
+    sc_out<bool> if_stall;
+
+    sc_out<DecodeInfo> if_id_port;
+
+    sc_in<JumpInfo> jump_pc ;
 
 };
 
