@@ -62,14 +62,14 @@ public:
     void processInput(){
         next_value = input.read();
 
-        if (next_value != value)
+        if (!(next_value == value))
             trigger.notify(period,sc_core::SC_NS);
 //        else
 //            trigger.cancel();
     }
 
     void update(){
-        if (next_value != value){
+        if (!(next_value == value)){
             value = next_value;
             output.write(value);
         }
@@ -107,7 +107,7 @@ public:
 
     void processInput(){
         next_value = input.read();
-        if (next_value != value )
+        if ( !(next_value == value) )
             trigger.notify(period,SC_NS);
 
     }
@@ -119,7 +119,7 @@ public:
 
     void update(){
         if (enable.read()){
-            if (next_value != value){
+            if ( !(next_value == value) ){ // sometimes we only implement ==
                 value = next_value;
                 output.write(value);
             }

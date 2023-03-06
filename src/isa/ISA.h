@@ -5,6 +5,7 @@
 
 #ifndef ISA_ISA_H_
 #define ISA_ISA_H_
+#pragma once
 
 #include "better-enums/enum.h"
 
@@ -20,7 +21,5 @@ BETTER_ENUM(Opcode,int,
             ld,st,lldi,lmv,
             send,recv,wait,sync,
             nop); // add nop
-
-auto to_op = Opcode::_from_string;
 
 #endif //ISA_ISA_H_

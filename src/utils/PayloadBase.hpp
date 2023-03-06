@@ -3,25 +3,27 @@
 //
 
 
+#pragma once
 
 #ifndef UTILS_PAYLOADBASE_H_
 #define UTILS_PAYLOADBASE_H_
+
 #include <string>
 #include <systemc>
 
 
 struct PayloadBase {
 
-//    PayloadBase() ;
-//    ~PayloadBase() ;
-
-    virtual std::string getContent() ;// pure virtual function is better but cpp is awful
-
-    friend std::ostream& operator<<(std::ostream& ,PayloadBase&);
-
     // overload =,==,<< and sc_trace()
-    // use default =,== is enough for most case
-    // sc_trace() only when you use trace file
+    // default = operator in cxx11
+    // provide << and sc_trace()
+    // need to overload == for derived class
+
+    friend std::ostream& operator<<(std::ostream& out,PayloadBase& self){
+        out<<"PayloadBase Type\n";
+        return out;
+    }
+
     inline friend void sc_trace(sc_core::sc_trace_file* f, const PayloadBase& payload, const std::string& name){
 
     }

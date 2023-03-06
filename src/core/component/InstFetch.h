@@ -6,9 +6,9 @@
 
 #ifndef CORE_COMPONENT_INSTFETCH_H_
 #define CORE_COMPONENT_INSTFETCH_H_
+#include <vector>
 
 #include <systemc>
-#include <vector>
 
 #include "config/Config.hpp"
 #include "isa/Instruction.h"
@@ -23,7 +23,10 @@ class InstFetch: public sc_module  {
 public:
     InstFetch(const sc_module_name& name,const CoreConfig& config);
 
-    
+    void setInstBuffer(const std::vector<Instruction>& buffer){
+        inst_buffer = buffer;
+        inst_buffer_size = inst_buffer.size();
+    }
 
     void process();
 
@@ -31,6 +34,7 @@ public:
 private:
     const CoreConfig &config;
     std::vector<Instruction> inst_buffer;
+    int inst_buffer_size = 0;
 
 private:
     RegEnable<int> pc_reg;
@@ -45,7 +49,7 @@ public:
 
     sc_out<DecodeInfo> if_id_port;
 
-    sc_in<JumpInfo> jump_pc ;
+    sc_in<JumpInfo> jump_port ;
 
 };
 

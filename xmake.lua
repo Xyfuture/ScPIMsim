@@ -24,7 +24,7 @@ target("ScPIMsim")
     add_includedirs("src/")
     -- add_includedirs("$(curdir)")
 
-    add_cxxflags("-Wextra", "-Wno-unused-parameter" ,"-Wno-unused-variable",{tools={"gcc","clang"}})
+    add_cxxflags("-Wextra", "-Wno-unused-parameter" ,"-Wno-unused-variable","-Wmissing-field-initializers",{tools={"gcc","clang"}})
     --add_cxxflags("-std=c++11")
 
     add_packages("systemc","nlohmann_json","better-enums")
