@@ -38,3 +38,7 @@ void InstFetch::process() {
         if_id_port.write(decode_info);
     }
 }
+
+void InstFetch::setInstBuffer(const std::vector<Instruction>& buffer) {
+    inst_buffer = buffer;
+}

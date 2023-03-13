@@ -23,10 +23,7 @@ class InstFetch: public sc_module  {
 public:
     InstFetch(const sc_module_name& name,const CoreConfig& config);
 
-    void setInstBuffer(const std::vector<Instruction>& buffer){
-        inst_buffer = buffer;
-        inst_buffer_size = inst_buffer.size();
-    }
+    void setInstBuffer(const std::vector<Instruction>& buffer);
 
     void process();
 

@@ -70,18 +70,19 @@ struct TransferField{
 
 struct Instruction {
     // Common field
+    Opcode op = Opcode::nop;
     int rs1_addr = 0;
     int rs2_addr = 0;
     int rd_addr = 0;
 
     // vector field
-    std::unique_ptr<VectorField> vector;
+    std::shared_ptr<VectorField> vector = nullptr;
     // matrix field
-    std::unique_ptr<MatrixField> matrix;
+    std::shared_ptr<MatrixField> matrix = nullptr;
     // scalar field
-    std::unique_ptr<ScalarField> scalar;
+    std::shared_ptr<ScalarField> scalar = nullptr;
     // transfer field
-    std::unique_ptr<TransferField> transfer;
+    std::shared_ptr<TransferField> transfer = nullptr;
 };
 
 
