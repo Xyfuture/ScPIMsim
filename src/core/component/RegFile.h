@@ -38,10 +38,10 @@ private:
     sc_signal<RegFileWrite> reg_out;
 
 public:
-    sc_in<RegFileReadAddr> read_addr_port;
-    sc_out<RegFileReadValue> read_value_port;
+    sc_in<RegFileReadAddr> reg_file_read_addr_port;
+    sc_out<RegFileReadValue> reg_file_read_value_port;
 
-    sc_in<RegFileWrite> write_port;
+    sc_in<RegFileWrite> reg_file_write_port;
 };
 
 

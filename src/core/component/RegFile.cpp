@@ -10,9 +10,9 @@ RegFile::RegFile(const sc_module_name &name, const CoreConfig &config)
     write_info_reg.output.bind(reg_out);
 
     SC_METHOD(readValue);
-    sensitive<<reg_out<<write_port<<read_addr_port; // 三个端口都需要
+    sensitive << reg_out << reg_file_write_port << reg_file_read_addr_port; // 三个端口都需要
     SC_METHOD(writeValue);
-    sensitive<<write_port;
+    sensitive << reg_file_write_port;
     SC_METHOD(updateValue);
     sensitive<<reg_out;
 
@@ -21,9 +21,9 @@ RegFile::RegFile(const sc_module_name &name, const CoreConfig &config)
 
 void RegFile::readValue() {
     auto last_write= reg_out.read();
-    auto cur_write = write_port.read();
+    auto cur_write = reg_file_write_port.read();
 
-    auto read_info = read_addr_port.read();
+    auto read_info = reg_file_read_addr_port.read();
 
     int values[] = {0,0,0}; // rd rs1 rs2
     int addrs[] = {read_info.rd_addr,read_info.rs1_addr,read_info.rs2_addr};
@@ -42,12 +42,12 @@ void RegFile::readValue() {
 
     RegFileReadValue value_info {values[0],values[1],values[2]};
 
-    read_value_port.write(value_info);
+    reg_file_read_value_port.write(value_info);
 
 }
 
 void RegFile::writeValue() {
-    auto cur_write = write_port.read();
+    auto cur_write = reg_file_write_port.read();
     reg_in.write(cur_write);
 }
 

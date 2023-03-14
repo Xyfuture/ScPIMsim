@@ -20,6 +20,6 @@ BETTER_ENUM(Opcode,int,
             vrsu,vrsl,
             ld,st,lldi,lmv,
             send,recv,wait,sync,
-            nop); // add nop
+            nop=0); // add nop
 
 #endif //ISA_ISA_H_
